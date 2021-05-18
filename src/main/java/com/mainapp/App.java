@@ -60,3 +60,6 @@ public class App extends SpringBootServletInitializer {
 // the jsps will be transformed into servlets, which are special java classes that can handle web requests
 // (home.jsp, for example, will become an object)
 // Apache tiles allows us to specify the layout of our site in a single config file (tiles.xml)
+// To connect to the database, we add the dependencies mysql-connector-java and spring-boot-starter-data-jpa to pom.xml. Also add configuration to application.properties
+// Annotations are used to save to the database (JPA annotations, but behind the scenes it's hibernate)
+
