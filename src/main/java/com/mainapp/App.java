@@ -57,7 +57,7 @@ public class App extends SpringBootServletInitializer {
 // The build tool we are using in this case is Maven, but we could use another one like Gradle (for Dependencies Management for example)
 // curl --head localhost:8080 in the terminal after running App.java shows information regarding the server, and so on
 // JSP: JavaServer Pages -> template engine (under src/main/webapp/WEB-INF)
-// the jsps will be transformed into servlets, which are special java classes that can handle web requests
+// the jsps will be transformed into servlets, which are special java classes that can handle web requests. When we create a jsp, it gets compiled to a java object/turned into a java class
 // (home.jsp, for example, will become an object)
 // Apache tiles allows us to specify the layout of our site in a single config file (tiles.xml)
 // To connect to the database, we add the dependencies mysql-connector-java and spring-boot-starter-data-jpa to pom.xml. Also add configuration to application.properties

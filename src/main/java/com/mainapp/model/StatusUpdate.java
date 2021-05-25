@@ -11,6 +11,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
 @Entity // Database annotation. It tells Hibernate to make a table out of this class. If
 		// I go to MySQL Workbench I should see the table
@@ -23,6 +24,7 @@ public class StatusUpdate {
 													// the most appropriate method for generating these ids
 	private Long id; // the class, not the primitive type
 
+	@Size(min=5, max=255, message= "{addstatus.text.size}") //message found in ValidationMessages.properties
 	@Column(name = "text")
 	private String text;
 
