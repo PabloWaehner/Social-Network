@@ -1,14 +1,15 @@
 package com.mainapp.controllers;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mainapp.model.StatusUpdate;
@@ -29,6 +30,22 @@ public class PageController {
 	@RequestMapping("/about")
 	String about() {
 		return "app.about"; //the tilesViewResolver in App.java will check in tiles.xml what to render exactly
+	}
+	
+	@RequestMapping(value="/viewstatus", method=RequestMethod.GET)
+	ModelAndView viewStatus(ModelAndView modelAndView, @RequestParam(name="p", defaultValue="1") int pageNumber) { //the name is p (?p=), and the default page is 1 (doing only /viewstatus)
+		
+//		System.out.println();
+//		System.out.println("=========" + pageNumber + "=========="); //when doing /viewstatus?p=11 for example, I see ==== 11 ===== on the console
+//		System.out.println();
+		
+		Page<StatusUpdate> page = statusUpdateService.getPage(pageNumber);
+		
+		modelAndView.getModel().put("page", page);
+		
+		modelAndView.setViewName("app.viewStatus");
+		
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="/addstatus", method=RequestMethod.GET)
