@@ -22,7 +22,7 @@
 			<div class="panel-heading">
 				<div class="panel-title">Add a Status Update</div>
 			</div>
-			<div class="panel-body">
+			<!-- <div class="panel-body"> -->
 				<form:form modelAttribute="statusUpdate">
 					<div class="errors">
 						<form:errors path="text" /> <!-- the errors will show here (for example: "size must be between 5 and 255" ) -->
@@ -33,7 +33,7 @@
 					</div>
 					<input type="submit" name="submit" value="Add Status" />
 				</form:form>
-			</div>
+			<!-- </div> -->
 		</div>
 		
 		<div class="panel panel-default">
@@ -46,3 +46,10 @@
 		</div>
 	</div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.0.20/tinymce.min.js"></script>
+<script>
+	tinymce.init({
+		selector: 'textarea',
+		plugins: 'link'
+	});
+</script>
