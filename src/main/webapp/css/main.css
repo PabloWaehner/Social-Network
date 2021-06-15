@@ -98,3 +98,9 @@ textarea {
 	margin-top: 20px;
 	margin-bottom: 40px;
 }
+
+.homepage-status {
+	text-align: center;
+	margin-top: 30px;
+	font-size: larger;
+}
