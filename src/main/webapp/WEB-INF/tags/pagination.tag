@@ -18,24 +18,26 @@
 <p>Start page: ${startPage}</p>
 <p>End page: ${endPage}</p> --%>
 
-<div class="pagination">
-	<c:if test="${block != 0}">
-		<a href="${url}?b=${block-1}&p=${(block-1)*size + 1}">&lt;&lt;</a>
-	</c:if>
-	<c:forEach var="pageNumber" begin="${startPage}" end="${endPage}">
-		<c:choose>
-			<c:when test="${page.number != pageNumber - 1}">
-				<a href="${url}?p=${pageNumber}&b=${block}"><c:out value="${pageNumber}" /></a>
-			</c:when>
-			<c:otherwise>
-				<strong><c:out value="${pageNumber}" /></strong> <!-- so we see the page we are in -->
-			</c:otherwise>
-		</c:choose>
-		<c:if test="${pageNumber != endPage}"> <!-- so we don't have "|" at the end -->
-		 |
+<c:if test="${page.totalPages != 1}" >
+	<div class="pagination">
+		<c:if test="${block != 0}">
+			<a href="${url}?b=${block-1}&p=${(block-1)*size + 1}">&lt;&lt;</a>
 		</c:if>
-	</c:forEach>
-	<c:if test="${endPage != page.totalPages}">
-		<a href="?b=${block+1}&p=${(block+1)*size + 1}">&gt;&gt;</a>
-	</c:if>
-</div>
+		<c:forEach var="pageNumber" begin="${startPage}" end="${endPage}">
+			<c:choose>
+				<c:when test="${page.number != pageNumber - 1}">
+					<a href="${url}?p=${pageNumber}&b=${block}"><c:out value="${pageNumber}" /></a>
+				</c:when>
+				<c:otherwise>
+					<strong><c:out value="${pageNumber}" /></strong> <!-- so we see the page we are in -->
+				</c:otherwise>
+			</c:choose>
+			<c:if test="${pageNumber != endPage}"> <!-- so we don't have "|" at the end -->
+			 |
+			</c:if>
+		</c:forEach>
+		<c:if test="${endPage != page.totalPages}">
+			<a href="?b=${block+1}&p=${(block+1)*size + 1}">&gt;&gt;</a>
+		</c:if>
+	</div>
+</c:if>
