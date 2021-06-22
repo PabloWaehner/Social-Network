@@ -12,7 +12,7 @@ import com.mainapp.model.StatusUpdateDao;
 @Service
 public class StatusUpdateService {
 
-	private final static int PAGESIZE = 3;
+	private final static int PAGESIZE = 10;
 	
 	@Autowired
 	private StatusUpdateDao statusUpdateDao;
@@ -31,5 +31,13 @@ public class StatusUpdateService {
 		PageRequest request = new PageRequest(pageNumber-1, PAGESIZE, Sort.Direction.DESC, "added");
 		
 		return statusUpdateDao.findAll(request);
+	}
+
+	public void delete(Long id) {
+		statusUpdateDao.delete(id);
+	}
+
+	public StatusUpdate get(Long id) {
+		return statusUpdateDao.findOne(id);
 	}
 }

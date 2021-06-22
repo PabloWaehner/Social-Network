@@ -41,12 +41,12 @@
 				<div class="panel-title">Status update added on <fmt:formatDate pattern="EEEE d MMMM y 'at' H:mm:ss" value="${latestStatusUpdate.added}" /></div> <!-- we can find latestStatusUpdate in PageController.java --> <!-- we cannot do .getAdded() --><!-- we see the date of the latest status-->
 			</div>
 			<div class="panel-body">
-				<c:out value="${latestStatusUpdate.text}" /> <!-- we can now see below what we last wrote on the form (we retrieve it from the database -->
+				${latestStatusUpdate.text} <!-- we can now see below what we last wrote on the form (we retrieve it from the database -->
 			</div>
 		</div>
 	</div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.0.20/tinymce.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.8.1/tinymce.min.js"></script>
 <script>
 	tinymce.init({
 		selector: 'textarea',

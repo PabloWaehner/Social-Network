@@ -21,6 +21,31 @@ public class StatusUpdateController {
 	@Autowired
 	private StatusUpdateService statusUpdateService;
 	
+	@RequestMapping(value="/editstatus", method=RequestMethod.GET)
+	ModelAndView editStatus(ModelAndView modelAndView, @RequestParam(name="id") Long id) {
+		StatusUpdate statusUpdate = statusUpdateService.get(id);
+		modelAndView.getModel().put("statusUpdate", statusUpdate);
+		modelAndView.setViewName("app.editStatus");	
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/editstatus", method=RequestMethod.POST)
+	ModelAndView editStatus(ModelAndView modelAndView, @Valid StatusUpdate statusUpdate, BindingResult result) {
+		modelAndView.setViewName("app.editStatus");
+		if(!result.hasErrors()) {
+			statusUpdateService.save(statusUpdate);
+			modelAndView.setViewName("redirect:/viewstatus");
+		}
+		return modelAndView;
+	}
+	
+	@RequestMapping(value ="/deletestatus", method=RequestMethod.GET) //GET is the default anyway
+	ModelAndView deleteStatus(ModelAndView modelAndView, @RequestParam(name="id") Long id) {
+		statusUpdateService.delete(id);
+		modelAndView.setViewName("redirect:/viewstatus");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="/viewstatus", method=RequestMethod.GET)
 	ModelAndView viewStatus(ModelAndView modelAndView, @RequestParam(name="p", defaultValue="1") int pageNumber) { //the name is p (?p=), and the default page is 1 (doing only /viewstatus)
 		

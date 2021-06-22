@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity // Database annotation. It tells Hibernate to make a table out of this class. If
 		// I go to MySQL Workbench I should see the table
 @Table(name = "status_update")
@@ -30,6 +32,7 @@ public class StatusUpdate {
 
 	@Column(name = "added")
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern="yyyy/MM/dd hh:mm:ss")
 	private Date added;
 
 	@PrePersist // this annotation will call the method before objects are persisted, before
